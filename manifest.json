@@ -1,9 +1,9 @@
 {
-  "name": "Follo G13",
+  "name": "Follo FK G13",
   "short_name": "Follo G13",
   "start_url": "./",
   "display": "standalone",
   "background_color": "#F4F6FA",
-  "theme_color": "#0B2545",
-  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }]
+  "theme_color": "#005496",
+  "icons": [{ "src": "logo.svg", "sizes": "any", "type": "image/svg+xml" }]
 }
