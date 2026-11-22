@@ -58,6 +58,103 @@ window.CONTENT = {
     scan: ["Se på ballen hver gang den blir truffet.", "Scan bort fra ballen rett etter hver touch.", "Scan ofte mens ballen er på vei mot deg – og så sent som mulig før mottaket."],
   },
 
+
+  // ---------- Vårt fotballspråk: begreper med videoeksempler ----------
+  // Videoene er lenker til YouTube (andres innhold) – vi viser dem, vi laster dem ikke opp.
+  concepts: [
+    { id: "aapen", word: "SCAN OG ÅPEN", tag: "Med ball",
+      short: "Se deg rundt før ballen kommer, og stå halvt åpen så du ser mest mulig av banen.",
+      why: "Jo mer du har sett før ballen kommer, jo raskere og bedre blir valget ditt. Står du rett mot ballen, ser du bare halve bildet.",
+      look: ["Hvor mange ganger ser han over skulderen før ballen kommer?", "Står han rett mot ballen, eller halvt åpen mot banen?", "Hvor mye av banen kan han se idet han tar imot – og hvor mye ser du når du står likt?"],
+      ask: "Hvor står du når du ser både ballen og målet vi skal mot?",
+      videos: [
+        { t: "Xavi – scanning surroundings examples", u: "https://www.youtube.com/watch?v=oMez1ZpJxDQ" },
+        { t: "Pedri's scanning is on another level (kort)", u: "https://www.youtube.com/shorts/DetP1KKgB74" },
+      ] },
+    { id: "lengste", word: "LENGSTE FOT", tag: "Med ball",
+      short: "Er medspilleren ledig, spiller du på foten lengst unna. Da kan han ta ballen med seg forbi leddet i første touch.",
+      why: "Ballen på lengste fot betyr at mottakeren slipper å stoppe og snu. Han tar imot halvt vendt og er forbi presseren med én gang.",
+      look: ["Hvilken fot tar han imot med – den nærmeste eller den lengste fra pasningsgiveren?", "Lar han ballen rulle over kroppen før han tar den med seg?", "Hvor mange spillere er han forbi etter første touch?"],
+      ask: "Hvilken fot vil du ha ballen på når du står ledig mellom linjene?",
+      videos: [
+        { t: "Why every midfielder needs the half-turn", u: "https://www.youtube.com/watch?v=tCWkBpLNSes" },
+        { t: "Kevin De Bruyne – vision og mottak mot Slovakia (EM 2024)", u: "https://www.youtube.com/watch?v=i-u1IpCibTs" },
+      ] },
+    { id: "naermeste", word: "NÆRMESTE FOT", tag: "Med ball",
+      short: "Står medspilleren under tett press, spiller du på foten nærmest deg. Da kan han skjerme ballen eller legge den tilbake på ett touch.",
+      why: "Under tett press er det ikke tid til å vende. Ballen på nærmeste fot gjør det lett å holde den eller spille videre til tredjemann.",
+      look: ["Hvor tett står presseren når ballen kommer?", "Holder mottakeren kroppen mellom ballen og motstanderen?", "Spiller han videre på ett touch – til hvem?"],
+      ask: "Hvordan ser du at en medspiller er for tett presset til å vende?",
+      videos: [
+        { t: "What Busquets knows about receiving that you don't", u: "https://www.youtube.com/watch?v=DrzNkGGTGfg" },
+        { t: "A small detail to become more press-resistant (press i ryggen)", u: "https://www.youtube.com/watch?v=E2U8tc1rc6I" },
+      ] },
+    { id: "skjerm", word: "SKJERM", tag: "Med ball",
+      short: "Kroppen mellom ballen og motstanderen. Lavt tyngdepunkt, armen ut for å kjenne hvor han er, ballen på foten lengst unna ham.",
+      why: "Slik forsvarer du ballen når du er presset – og du vinner tid til at medspillerne kommer til.",
+      look: ["Hvor er kroppen hans i forhold til ballen og motstanderen?", "Hvordan bruker han armen?", "Hvilken fot har han ballen på?"],
+      ask: "Hvem på laget er best til å skjerme – og hva gjør han?",
+      videos: [
+        { t: "I analysed the world's most press-resistant players", u: "https://www.youtube.com/watch?v=33hi8BV2zOQ" },
+        { t: "What Busquets knows about receiving that you don't", u: "https://www.youtube.com/watch?v=DrzNkGGTGfg" },
+      ] },
+    { id: "touchfrem", word: "TOUCH FREM", tag: "Med ball",
+      short: "Er det rom foran deg, tar du første touch fremover og angriper rommet.",
+      why: "Når du fører ballen inn i rommet, må noen gå ut på deg. Da åpner det seg rom for en medspiller.",
+      look: ["Går første touch fremover, til siden eller bakover?", "Hvor mange meter vinner han på første touch?", "Hvem må gå ut på ham – og hvem blir ledig da?"],
+      ask: "Når er det riktig å stoppe ballen, og når skal du ta den med deg fremover?",
+      videos: [
+        { t: "FIFA Training Centre: first touch to evade pressure (klipp fra U17-VM)", u: "https://www.fifatrainingcentre.com/en/game/tournaments/fu17wwcfu17wwc-24/2024/technical-using-a-first-touch-to-evade-pressure.php" },
+        { t: "Receive on the back foot and push the ball into space", u: "https://www.youtube.com/watch?v=Xj8wx05SdHA" },
+      ] },
+    { id: "tiltrekk", word: "TILTREKK", tag: "Med ball",
+      short: "Hold ballen litt lenger, la dem komme på deg – og spill forbi. Hver motspiller som går i press, etterlater et rom bak seg.",
+      why: "Når de presser høyt, blir rommet mellom linjene større. Det er der vi vil spille oss fremover. Keeperen og stopperne er de viktigste til dette.",
+      look: ["Hvor lenge venter han med ballen før han spiller?", "Hvem går i press – og hvilket rom blir tomt bak ham?", "Hvem tar imot i det rommet?"],
+      ask: "Hvorfor kan det være lurt å vente når en motstander løper mot deg?",
+      videos: [
+        { t: "Provoking the press: De Zerbi's Brighton tactics explained", u: "https://www.youtube.com/watch?v=dGLmBw0y_s4" },
+      ] },
+    { id: "godfeil", word: "GOD FEIL", tag: "Holdning",
+      short: "En feil der vi hadde fått mye om det hadde lyktes. 1 mot 1 når du er alene med keeper om du kommer forbi – og gjennombruddspasningen. Vi heier på dem.",
+      why: "Spillere som tør, blir gode. Mister du ballen etter et godt valg, går vi bare i gjenpress sammen.",
+      look: ["Hva hadde skjedd om dribblingen eller pasningen hadde lyktes?", "Hvor mange ganger mislykkes selv de beste før det sitter?", "Hva gjør laget rett etter at ballen er mistet?"],
+      ask: "Hva er forskjellen på en god og en dårlig feil?",
+      videos: [
+        { t: "Analyzing Jérémy Doku's 1.5-second dribble", u: "https://www.youtube.com/watch?v=_w-kBecDIco" },
+        { t: "Kevin De Bruyne – the through pass king", u: "https://www.youtube.com/watch?v=5m7AvedjC2g" },
+      ] },
+    { id: "gjenpress", word: "GJENPRESS", tag: "Uten ball",
+      short: "Mister vi ballen, går de nærmeste rett på. Vinn den tilbake, eller kom i balanse og press på nytt.",
+      why: "Rett etter balltap er motstanderen ute av posisjon. Da er det lettest å vinne ballen høyt i banen.",
+      look: ["Hvor mange sekunder går det før noen er på ballføreren?", "Hvem stenger den nærmeste pasningen?"], ask: "Hva gjør du i de første tre sekundene etter at vi mistet ballen?", videos: [] },
+    { id: "balanse", word: "BALANSE", tag: "Uten ball",
+      short: "Like mange eller flere av oss mellom ballen og eget mål enn de har angripere.",
+      why: "Da kan vi tåle et balltap – og tørre å angripe med mange.", look: [], ask: "Hvem holder balansen når begge backene er høyt?", videos: [] },
+    { id: "frimann", word: "FRIMANN", tag: "Med ball",
+      short: "Den som er ledig. Når de presser likt antall, er det alltid keeperen. Finn ham direkte eller via en tredjemann.",
+      why: "Frimannen kan vende og spille fremover.", look: [], ask: "Hvem er ledig når de presser med tre?", videos: [] },
+  ],
+
+  // ---------- Slik opptrer vi ----------
+  conduct: [
+    { h: "På trening", items: ["Oppmøte 15 minutter før – klar til å starte når økta starter.", "Hils på alle når du kommer.", "Lock in: Telefonen er borte fra oppmøte til økta er ferdig.", "Gi alt i hver øvelse – intensitet er et valg.", "Etter trening er vi kompiser igjen."] },
+    { h: "Mot hverandre", items: ["Back hverandre i både motgang og medgang.", "Si fra til medspillere – både når de gjør noe bra og når vi kan bli bedre. Ærlighet er kjærlighet, men si det på en måte du selv vil høre det.", "Framsnakk, ikke baksnakk.", "Det heter vi, ikke jeg. Alle har like stor verdi.", "Gjør en annens dag litt bedre hver dag."] },
+    { h: "Når det går galt", items: ["En god feil får applaus – også fra benken.", "Mister vi ballen, går vi i gjenpress sammen. Ingen henger med hodet.", "Tåle tilbakemeldinger: Lytt, spør hvis du ikke forstår, prøv igjen.", "Si fra om du har vondt. Det koster aldri plass eller spilletid."] },
+    { h: "På kamp", items: ["Forbered deg: mat, søvn, utstyr og din egen oppgave.", "Hils på motstander og dommer før og etter kampen.", "Vi snakker bare til dommeren gjennom kapteinen.", "Etter kampen: tre ting som var bra og én ting å bli bedre på."] },
+  ],
+
+  // ---------- Slik trener vi ----------
+  method: [
+    { h: "Vi spiller mest", p: "Nesten alt vi gjør, er spill med motstandere, medspillere og mål. Det er der du lærer å se, velge og utføre – akkurat som i kamp." },
+    { h: "Regler som lærer deg noe", p: "Vi endrer reglene for å få fram det vi jobber med: mindre bane, færre touch, poeng for tredjemann eller lang ball til ledig spiller. Du finner løsningen selv – treneren hjelper deg med spørsmål." },
+    { h: "Aldri helt likt", p: "Vi gjentar det samme temaet mange ganger, men aldri på helt samme måte. Det heter repetisjon uten repetisjon, og det gjør at du klarer det også når kampen ser annerledes ut." },
+    { h: "Vi tør å feile", p: "Gode feil er en del av læringen. Vi teller dem ikke mot deg – vi heier på dem." },
+    { h: "Teknikk med mening", p: "Egne teknikkbolker bruker vi mest til avslutninger og moro. Resten av teknikken trener vi i spill." },
+    { h: "Glede- og konkurranseøkt", p: "Dagen før kamp har vi en økt med konkurranser, lek, samarbeid og masse avslutninger. Lagene blandes, og innsats teller like mye som å vinne." },
+    { h: "Oppvarming og kropp", p: "Vi varmer opp med FIFA 11+ Kids. Er du i vekstspurten, gjør du mindre av det tyngste en periode – men du er alltid med laget." },
+  ],
+
   training: [
     { group: "Med ball", items: [
       { name: "Touch og mottak", meta: "30–40 min · alene eller to og to", why: "Mange touch på begge føtter. Bruk svak fot like mye som den sterke.",
