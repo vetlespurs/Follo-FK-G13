@@ -218,7 +218,7 @@ function shell(active, inner) {
   const tabs = [["hjem", "⌂", "Hjem"], ["uke", "◷", "Denne uka"], ["kalender", "▦", "Kalender"], isCoach() ? ["trener", "✎", "Trener"] : ["meg", "☺", "Min side"], ["mer", "☰", "Mer"]];
   const demoBar = DEMO ? `<div class="demo"><b>DEMO</b> – oppdiktede spillere, ingenting lagres. Se appen som:
     ${["trener", "spiller", "forelder"].map(r => `<button data-role="${r}" class="${me?.role === r ? "on" : ""}">${r[0].toUpperCase() + r.slice(1)}</button>`).join("")}</div>` : "";
-  app.innerHTML = `${demoBar}<header class="top"><div class="logo">G13</div><b>FOLLO G13</b><a href="#/meg" title="Min side">${esc(me.name.split(" ")[0])} ☺</a></header><div class="stripe"></div>
+  app.innerHTML = `${demoBar}<header class="top"><a href="#/hjem" class="brandlink"><img src="logo.svg" alt="Follo FK" class="logoimg"><b>FOLLO FK <span>G13</span></b></a><a href="#/meg" class="who" title="Min side">${esc(me.name.split(" ")[0])} ☺</a></header><div class="stripe"></div>
   <main id="main">${inner}</main>
   <nav class="bottom">${tabs.map(([r, i, l]) => `<a href="#/${r}" class="${active === r ? "on" : ""}"><span class="i">${i}</span>${l}</a>`).join("")}</nav>`;
   $$(".demo button").forEach(b => b.onclick = () => { api.setRole(b.dataset.role); route(true); });
@@ -227,7 +227,7 @@ function shell(active, inner) {
 
 /* ---------- innlogging ---------- */
 function authPage(kind) {
-  const brand = `<div class="brand"><div class="logo">G13</div><div><h1 style="margin:0">FOLLO G13</h1><div class="mute">Lagets side · ${esc(C.motto)}</div></div></div>`;
+  const brand = `<div class="brand"><img src="logo.svg" alt="Follo FK" style="height:84px"><div><h1 style="margin:0">FOLLO FK G13</h1><div class="mute">Lagets side · ${esc(C.motto)}</div></div></div>`;
   const forms = {
     login: `<form id="f"><label>Brukernavn</label><input name="u" autocomplete="username" autocapitalize="none" required>
       <label>Passord</label><input name="p" type="password" autocomplete="current-password" required>
@@ -268,6 +268,7 @@ async function pageHome(main) {
   main.innerHTML = `<p class="kicker">Follo G13</p><h1>Hei, ${first}!</h1>
   <a href="#/puls" style="text-decoration:none"><div class="puls">${C.puls.map(x => `<div><b>${x.l}</b><span>${x.w}</span></div>`).join("")}</div></a>
   <p class="small mute" style="margin-top:6px">«${esc(C.motto)}»</p>
+  ${(() => { const cs = C.concepts.filter(c => c.videos.length); const c = cs[week(today()) % cs.length]; return `<a href="#/begrep/${c.id}" style="text-decoration:none"><div class="card hero"><p class="kicker" style="color:#CDE6F5">Ukens begrep</p><h2 style="margin:0 0 4px">${esc(c.word)}</h2><p style="margin:0">${esc(c.short)}</p><p class="small" style="margin:8px 0 0;color:#CDE6F5">Se videoeksempler ›</p></div></a>`; })()}
   <details><summary>Slik bruker du appen</summary><div>${C.howTo.map(([h, t]) => `<p><b>${h}:</b> ${t}</p>`).join("")}<p class="small mute">Tips: legg appen på hjemskjermen (Del → Legg til på Hjem-skjerm).</p></div></details>
   ${isCoach() ? `<details id="newpost"><summary>+ Del noe nytt med laget</summary><div><form id="pf">
     <label>Overskrift</label><input name="title" required><label>Lenke (YouTube, artikkel …)</label><input name="url" type="url" placeholder="https://">
@@ -366,7 +367,7 @@ function editSession(s) {
 
 /* ---------- Mer + innholdssider ---------- */
 function pageMore(main) {
-  const items = [["spillmodell", "Spillmodell", "Hvordan vi spiller med og uten ball."], ["puls", "PULS", "Klubbens verdier – og hva de betyr for oss."], ["egentrening", "Egentrening", "Ball, sprint og styrke du kan gjøre selv."], ["foreldre", "For foreldre", "Vekst og modning, samtykke og personvern."], ["meg", "Min side", "Mål, logg, høyde, passord og logg ut."]];
+  const items = [["begreper", "Vårt fotballspråk", "Begrepene vi bruker – med videoeksempler fra proffene."], ["spillmodell", "Spillmodell", "Hvordan vi spiller med og uten ball."], ["opptreden", "Slik opptrer vi", "På trening, mot hverandre, når det går galt og på kamp."], ["slik-trener-vi", "Slik trener vi", "Hvorfor vi spiller mest, og hva gode feil er."], ["puls", "PULS", "Klubbens verdier – og hva de betyr for oss."], ["egentrening", "Egentrening", "Ball, sprint og styrke du kan gjøre selv."], ["foreldre", "For foreldre", "Vekst og modning, samtykke og personvern."], ["meg", "Min side", "Mål, logg, høyde, passord og logg ut."]];
   main.innerHTML = `<h1>Mer</h1>${items.map(([r, h, t]) => `<a href="#/${r}" style="text-decoration:none;color:inherit"><div class="card row between"><div><h3>${h}</h3><div class="mute small">${t}</div></div><b>›</b></div></a>`).join("")}`;
 }
 function pageModel(main) {
@@ -378,7 +379,7 @@ function pageModel(main) {
   <h2>Lagsintensjoner</h2>${M.intentions.map(i => `<details><summary>${esc(i.name)} <span class="pill ${i.phase === "Uten ball" ? "y" : ""}" style="margin-left:6px">${i.phase}</span></summary><div><p>${esc(i.text)}</p><ul class="clean">${i.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul></div></details>`).join("")}
   <h2>Balanse</h2><div class="card">${esc(M.balance)}</div>
   <h2>Gode og dårlige feil</h2><div class="grid2"><div class="card" style="background:var(--green-l)"><h3 style="color:var(--green)">God feil</h3><ul class="clean small">${M.errors.good.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div><div class="card" style="background:var(--red-l)"><h3 style="color:var(--red)">Dårlig feil</h3><ul class="clean small">${M.errors.bad.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div>
-  <h2>Felles språk</h2><div class="card list">${M.words.map(([w, t]) => `<div class="item"><span class="pill">${w}</span><span class="small">${esc(t)}</span></div>`).join("")}</div>
+  <h2>Vårt fotballspråk</h2><div class="chips">${C.concepts.map(c => `<a class="chip" href="#/begrep/${c.id}">${esc(c.word)}</a>`).join("")}</div>
   <h2>Slik scanner du</h2><div class="card"><ol style="margin:0;padding-left:18px">${M.scan.map(x => `<li>${esc(x)}</li>`).join("")}</ol></div>`;
   $$("#shape button").forEach(b => b.onclick = () => { $$("#shape button").forEach(x => x.classList.toggle("on", x === b)); const pos = M.shapes[b.dataset.s].pos; $$("#pitch .p").forEach((el, i) => { el.style.left = pos[i][1] + "%"; el.style.top = pos[i][2] + "%"; el.textContent = pos[i][0]; }); });
 }
@@ -395,6 +396,37 @@ function pageTraining(main) {
 }
 function pageParents(main) {
   main.innerHTML = `<a href="#/mer">‹ Mer</a><h1>For foreldre</h1>${C.parents.map(x => `<div class="card"><h3>${esc(x.h)}</h3><p style="margin:0">${esc(x.p)}</p></div>`).join("")}`;
+}
+
+
+/* ---------- Vårt fotballspråk ---------- */
+function videoCard(v) {
+  const id = ytId(v.u);
+  return `<a class="video" href="${esc(v.u)}" target="_blank" rel="noopener">${id ? `<img src="https://i.ytimg.com/vi/${id}/hqdefault.jpg" alt="" loading="lazy"><span class="play">▶</span>` : `<div class="noimg">${esc(host(v.u))}</div>`}<span class="vt">${esc(v.t)}</span></a>`;
+}
+function pageConcepts(main) {
+  const groups = ["Med ball", "Uten ball", "Holdning"];
+  main.innerHTML = `<a href="#/mer">‹ Mer</a><h1 style="margin-top:8px">Vårt fotballspråk</h1><p class="mute">Ordene vi bruker på trening og kamp. Trykk på et ord for forklaring og videoeksempler fra proffene.</p>
+  ${groups.map(g => `<h2>${g}</h2><div class="cgrid">${C.concepts.filter(c => c.tag === g).map(c => `<a class="ccard" href="#/begrep/${c.id}"><b>${esc(c.word)}</b><span>${esc(c.short)}</span>${c.videos.length ? `<em>▶ ${c.videos.length} video${c.videos.length > 1 ? "er" : ""}</em>` : ""}</a>`).join("")}</div>`).join("")}`;
+}
+function pageConcept(main, id) {
+  const c = C.concepts.find(x => x.id === id); if (!c) { location.hash = "#/begreper"; return; }
+  main.innerHTML = `<a href="#/begreper">‹ Vårt fotballspråk</a><p class="kicker" style="margin-top:10px">${esc(c.tag)}</p><h1>${esc(c.word)}</h1>
+  <div class="card"><p style="font-size:17px;margin:0"><b>${esc(c.short)}</b></p></div>
+  <div class="card"><h3>Hvorfor?</h3><p style="margin:0">${esc(c.why)}</p></div>
+  ${c.videos.length ? `<h2>Se på proffene</h2><div class="vgrid">${c.videos.map(videoCard).join("")}</div>` : ""}
+  ${c.look.length ? `<h2>Se etter dette</h2><div class="card"><ul class="clean">${c.look.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
+  ${c.ask ? `<div class="msg info"><b>Spørsmål til deg:</b> ${esc(c.ask)}</div>` : ""}
+  <p class="small mute">Videoene ligger på YouTube eller andre nettsider og åpnes der.</p>`;
+}
+function pageConduct(main) {
+  main.innerHTML = `<a href="#/mer">‹ Mer</a><h1 style="margin-top:8px">Slik opptrer vi</h1><p class="mute">Slik er vi mot hverandre – på trening, på kamp og når det går galt.</p>
+  ${C.conduct.map(g => `<div class="card"><h3>${esc(g.h)}</h3><ul class="clean">${g.items.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}
+  <a href="#/puls" style="text-decoration:none"><div class="puls" style="margin-top:6px">${C.puls.map(x => `<div><b>${x.l}</b><span>${x.w}</span></div>`).join("")}</div></a>`;
+}
+function pageMethod(main) {
+  main.innerHTML = `<a href="#/mer">‹ Mer</a><h1 style="margin-top:8px">Slik trener vi</h1><p class="mute">Hvorfor øktene ser ut som de gjør.</p>
+  ${C.method.map((m, i) => `<div class="card row" style="align-items:flex-start"><div class="num">${i + 1}</div><div><h3>${esc(m.h)}</h3><p style="margin:0">${esc(m.p)}</p></div></div>`).join("")}`;
 }
 
 /* ---------- Min side ---------- */
@@ -529,8 +561,8 @@ async function route(force) {
     if (r !== path) history.replaceState(null, "", "#/" + r);
     const coachOnly = ["trener", "spiller"];
     if (coachOnly.includes(r) && !isCoach()) { location.hash = "#/hjem"; return; }
-    const pages = { hjem: pageHome, uke: pageWeek, kalender: pageCalendar, mer: pageMore, spillmodell: pageModel, puls: pagePuls, egentrening: pageTraining, foreldre: pageParents, meg: pageMe, logg: m => pageLog(m, arg), trener: pageCoach, spiller: m => pagePlayer(m, arg) };
-    const tab = { spillmodell: "mer", puls: "mer", egentrening: "mer", foreldre: "mer", logg: "meg", spiller: "trener" }[r] || r;
+    const pages = { begreper: pageConcepts, begrep: m => pageConcept(m, arg), opptreden: pageConduct, "slik-trener-vi": pageMethod, hjem: pageHome, uke: pageWeek, kalender: pageCalendar, mer: pageMore, spillmodell: pageModel, puls: pagePuls, egentrening: pageTraining, foreldre: pageParents, meg: pageMe, logg: m => pageLog(m, arg), trener: pageCoach, spiller: m => pagePlayer(m, arg) };
+    const tab = { begreper: "mer", begrep: "mer", opptreden: "mer", "slik-trener-vi": "mer", spillmodell: "mer", puls: "mer", egentrening: "mer", foreldre: "mer", logg: "meg", spiller: "trener" }[r] || r;
     const main = shell(tab, `<p class="loading">Laster …</p>`);
     await (pages[r] || pageHome)(main);
     window.scrollTo(0, 0);
