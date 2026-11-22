@@ -64,7 +64,7 @@ let api;
 /* ---------- Supabase ---------- */
 function supaApi() {
   const sb = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
-  const email = u => `${u.toLowerCase()}@${CFG.EMAIL_DOMAIN || "brukere.follog13.no"}`;
+  const email = u => `${u.toLowerCase()}@${CFG.EMAIL_DOMAIN || "brukere.follo-g13.invalid"}`;
   const ok = ({ data, error }) => { if (error) throw new Error(error.message); return data; };
   return {
     async me() {
@@ -78,10 +78,8 @@ function supaApi() {
       if (error) throw new Error("Feil brukernavn eller passord.");
     },
     async signup(code, u, pw) {
-      const free = ok(await sb.rpc("username_free", { u }));
-      if (!free) throw new Error("Brukernavnet er tatt. Velg et annet.");
-      const { error } = await sb.auth.signUp({ email: email(u), password: pw, options: { data: { username: u.toLowerCase(), code: code.trim().toUpperCase() } } });
-      if (error) throw new Error(/database|saving/i.test(error.message) ? "Koden er ugyldig, brukt eller utløpt. Spør treneren om en ny." : error.message);
+      const { error } = await sb.rpc("register_with_code", { p_code: code.trim(), p_username: u, p_password: pw });
+      if (error) throw new Error(error.message);
       await this.login(u, pw);
     },
     async resetPw(u, code, pw) { ok(await sb.rpc("reset_password_with_code", { u, c: code.trim(), new_password: pw })); },
