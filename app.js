@@ -376,7 +376,7 @@ function pageModel(main) {
   <div class="seg" id="shape">${Object.entries(M.shapes).map(([k, v], i) => `<button class="${i ? "" : "on"}" data-s="${k}">${v.label}</button>`).join("")}</div>
   <div class="pitch" id="pitch" style="margin-top:10px"><div class="half"></div><div class="box"></div>${M.shapes["4-3-1"].pos.map((p, i) => `<div class="p ${p[0] === "K" ? "k" : ""}" data-i="${i}" style="left:${p[1]}%;top:${p[2]}%">${p[0]}</div>`).join("")}</div>
   <p class="small mute" style="text-align:center;margin-top:6px">Backene (2 og 5) spiller både back og kant. Formasjon er mindre viktig enn prinsippene.</p>
-  <h2>Lagsintensjoner</h2>${M.intentions.map(i => `<details><summary>${esc(i.name)} <span class="pill ${i.phase === "Uten ball" ? "y" : ""}" style="margin-left:6px">${i.phase}</span></summary><div><p>${esc(i.text)}</p><ul class="clean">${i.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul></div></details>`).join("")}
+  <h2>Lagsintensjoner</h2>${M.intentions.map(i => `<details><summary>${esc(i.name)} <span class="pill ${i.phase === "Uten ball" ? "y" : ""}" style="margin-left:6px">${i.phase}</span></summary><div><p>${esc(i.text)}</p><ul class="clean">${i.points.map(p => `<li>${esc(p)}</li>`).join("")}</ul>${(i.videos || []).length ? `<div class="vgrid" style="margin-top:10px">${i.videos.map(videoCard).join("")}</div>` : ""}</div></details>`).join("")}
   <h2>Balanse</h2><div class="card">${esc(M.balance)}</div>
   <h2>Gode og dårlige feil</h2><div class="grid2"><div class="card" style="background:var(--green-l)"><h3 style="color:var(--green)">God feil</h3><ul class="clean small">${M.errors.good.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div><div class="card" style="background:var(--red-l)"><h3 style="color:var(--red)">Dårlig feil</h3><ul class="clean small">${M.errors.bad.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div></div>
   <h2>Vårt fotballspråk</h2><div class="chips">${C.concepts.map(c => `<a class="chip" href="#/begrep/${c.id}">${esc(c.word)}</a>`).join("")}</div>
@@ -414,6 +414,7 @@ function pageConcept(main, id) {
   main.innerHTML = `<a href="#/begreper">‹ Vårt fotballspråk</a><p class="kicker" style="margin-top:10px">${esc(c.tag)}</p><h1>${esc(c.word)}</h1>
   <div class="card"><p style="font-size:17px;margin:0"><b>${esc(c.short)}</b></p></div>
   <div class="card"><h3>Hvorfor?</h3><p style="margin:0">${esc(c.why)}</p></div>
+  ${c.svg ? `<div class="card" style="padding:8px"><div class="diagram">${c.svg}</div></div>` : ""}
   ${c.videos.length ? `<h2>Se på proffene</h2><div class="vgrid">${c.videos.map(videoCard).join("")}</div>` : ""}
   ${c.look.length ? `<h2>Se etter dette</h2><div class="card"><ul class="clean">${c.look.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>` : ""}
   ${c.ask ? `<div class="msg info"><b>Spørsmål til deg:</b> ${esc(c.ask)}</div>` : ""}
@@ -426,7 +427,7 @@ function pageConduct(main) {
 }
 function pageMethod(main) {
   main.innerHTML = `<a href="#/mer">‹ Mer</a><h1 style="margin-top:8px">Slik trener vi</h1><p class="mute">Hvorfor øktene ser ut som de gjør.</p>
-  ${C.method.map((m, i) => `<div class="card row" style="align-items:flex-start"><div class="num">${i + 1}</div><div><h3>${esc(m.h)}</h3><p style="margin:0">${esc(m.p)}</p></div></div>`).join("")}`;
+  ${C.method.map((m, i) => `<div class="card row" style="align-items:flex-start"><div class="num">${i + 1}</div><div><h3>${esc(m.h)}</h3><p style="margin:0">${esc(m.p)}</p>${m.url ? `<a class="btn ghost small" style="margin-top:8px" href="${esc(m.url)}" target="_blank" rel="noopener">Åpne ›</a>` : ""}</div></div>`).join("")}`;
 }
 
 /* ---------- Min side ---------- */
