@@ -1,4 +1,6 @@
 // Fast innhold i appen. Endre tekstene her – ingen database trengs.
+// Egen tegning av rommene (ikke kopi av NFF-figuren).
+const ROM_SVG = "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 300 420\" font-family=\"Arial,Helvetica,sans-serif\"><rect width=\"300\" height=\"420\" rx=\"12\" fill=\"#2E7D4F\"/><rect x=\"10\" y=\"10\" width=\"280\" height=\"400\" fill=\"none\" stroke=\"rgba(255,255,255,.6)\" stroke-width=\"2\"/><line x1=\"10\" y1=\"210\" x2=\"290\" y2=\"210\" stroke=\"rgba(255,255,255,.6)\" stroke-width=\"2\"/><rect x=\"85\" y=\"10\" width=\"130\" height=\"50\" fill=\"none\" stroke=\"rgba(255,255,255,.6)\" stroke-width=\"2\"/><rect x=\"85\" y=\"360\" width=\"130\" height=\"50\" fill=\"none\" stroke=\"rgba(255,255,255,.6)\" stroke-width=\"2\"/><rect x=\"10\" y=\"60\" width=\"280\" height=\"55\" fill=\"#1F98D0\" opacity=\".28\"/><rect x=\"10\" y=\"125\" width=\"280\" height=\"55\" fill=\"#FFD54F\" opacity=\".25\"/><rect x=\"10\" y=\"190\" width=\"280\" height=\"70\" fill=\"#ffffff\" opacity=\".12\"/><rect x=\"10\" y=\"125\" width=\"70\" height=\"135\" fill=\"none\" stroke=\"#fff\" stroke-dasharray=\"5 4\" stroke-width=\"2\"/><text x=\"185\" y=\"93\" font-size=\"15\" font-weight=\"800\" fill=\"#fff\" text-anchor=\"middle\" letter-spacing=\"3\">BAKROM</text><text x=\"185\" y=\"158\" font-size=\"15\" font-weight=\"800\" fill=\"#fff\" text-anchor=\"middle\" letter-spacing=\"3\">MELLOMROM</text><text x=\"185\" y=\"234\" font-size=\"15\" font-weight=\"800\" fill=\"#fff\" text-anchor=\"middle\" letter-spacing=\"3\">FRAMROM</text><text x=\"45\" y=\"186\" font-size=\"9.5\" font-weight=\"800\" fill=\"#fff\" text-anchor=\"middle\">ROM P\u00c5</text><text x=\"45\" y=\"198\" font-size=\"9.5\" font-weight=\"800\" fill=\"#fff\" text-anchor=\"middle\">MOTSATT</text><text x=\"45\" y=\"210\" font-size=\"9.5\" font-weight=\"800\" fill=\"#fff\" text-anchor=\"middle\">SIDE</text><circle cx=\"150\" cy=\"30\" r=\"9\" fill=\"#7A1F2B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"95\" cy=\"120\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"120\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"205\" cy=\"120\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"255\" cy=\"120\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"120\" cy=\"185\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"190\" cy=\"185\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"240\" cy=\"185\" r=\"9\" fill=\"#D23B3B\" stroke=\"#fff\" stroke-width=\"2\"/><circle cx=\"150\" cy=\"395\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"150\" y=\"399\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">K</text><circle cx=\"115\" cy=\"330\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"115\" y=\"334\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">4</text><circle cx=\"195\" cy=\"330\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"195\" y=\"334\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">3</text><circle cx=\"255\" cy=\"280\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"255\" y=\"284\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">2</text><circle cx=\"45\" cy=\"290\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"45\" y=\"294\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">5</text><circle cx=\"150\" cy=\"270\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"150\" y=\"274\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">6</text><circle cx=\"215\" cy=\"245\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"215\" y=\"249\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">8</text><circle cx=\"95\" cy=\"235\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"95\" y=\"239\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">8</text><circle cx=\"160\" cy=\"140\" r=\"9\" fill=\"#005496\" stroke=\"#fff\" stroke-width=\"2\"/><text x=\"160\" y=\"144\" font-size=\"10\" font-weight=\"700\" text-anchor=\"middle\" fill=\"#fff\">9</text><circle cx=\"267\" cy=\"268\" r=\"4.5\" fill=\"#fff\" stroke=\"#000\" stroke-width=\"1\"/><text x=\"150\" y=\"418\" font-size=\"9\" fill=\"#fff\" text-anchor=\"middle\" opacity=\".85\">Vi angriper oppover \u2191</text></svg>";
 window.CONTENT = {
   team: "Follo G13",
   motto: "Fjell kan flyttes med tro",
@@ -30,15 +32,18 @@ window.CONTENT = {
     intentions: [
       { id: "ut", name: "Spille oss ut", phase: "Med ball",
         text: "Vi spiller oss ut bakfra, også under press. Keeperen er alltid med som frimann.",
+        videos: [{ t: "NFF: A1 – angrep mot høyt press", u: "https://www.youtube.com/watch?v=d3mmXo3ou2I" }],
         points: ["Keeperen er fri når det er likt antall – bruk ham.", "Skap trekanter og vinkler, og finn den ledige spilleren.", "En lang ball til ledig spiller er lov, og den skal hylles.", "Feil her er læring. Vi prøver igjen."] },
       { id: "frem", name: "Spille oss fremover", phase: "Med ball",
         text: "Progressive pasninger. Målet med ballen er alltid å komme kontrollert til siste tredjedel.",
         points: ["Se fremover først.", "Finn frimannen direkte, eller via en tredjemann (stopper eller sekser).", "Pass and move og veggspill låser opp likt antall.", "Backene gir bredde høyt. Spissen faller ned eller truer bakrom."] },
       { id: "eksplosjon", name: "Eksplosjon", phase: "Med ball",
         text: "På siste tredjedel skal det gå fort. Tør å prøve kule løsninger.",
+        videos: [{ t: "NFF: A2 – angrep mot lavt forsvar", u: "https://www.youtube.com/watch?v=ipJ3P9YI0hE" }],
         points: ["Utfordre 1 mot 1 når du er alene med keeper om du lykkes.", "Overtall og bevegelse foran ballfører.", "Tilbakelegg og avslutninger på ett touch.", "To stoppere – og sekseren når backene går – holder balansen (liketall eller +1)."] },
       { id: "vinne", name: "Vinne ballen", phase: "Uten ball",
         text: "Høyt press er utgangspunktet. Etter balltap går vi alltid rett i gjenpress.",
+        videos: [{ t: "NFF: Kamp om ballen", u: "https://www.youtube.com/watch?v=ss3kh3sA9jc" }],
         points: ["Gjenpress med en gang: vinn ballen, eller kom i balanse og press på nytt.", "Press på pressignaler, alle sammen.", "Riktig side og andreball når de slår langt.", "Nullsituasjoner skal vinnes."] },
     ],
     balance: "Balanse betyr liketall eller +1: like mange av oss som de har angripere mellom ballen og eget mål – eller én flere.",
@@ -115,6 +120,19 @@ window.CONTENT = {
       videos: [
         { t: "Provoking the press: De Zerbi's Brighton tactics explained", u: "https://www.youtube.com/watch?v=dGLmBw0y_s4" },
       ] },
+    { id: "rom", word: "ROMMENE", tag: "Med ball",
+      short: "Bakrom er bak forsvarsleddet. Mellomrom er mellom forsvars- og midtbaneleddet deres. Framrom er foran midtbaneleddet. Rom på motsatt side er der ballen ikke er.",
+      why: "Når vi vet hva rommene heter, kan vi snakke sammen om hvor vi skal spille. Vi vil helst spille i mellomrommet og bakrommet – og bytter side når de flytter seg mot ballen.",
+      svg: ROM_SVG,
+      look: ["Hvor mange av oss står i mellomrommet?", "Truer noen bakrommet så forsvaret må stå lavere?", "Er det ledig på motsatt side når de har flyttet seg mot ballen?"],
+      ask: "Hvilket rom står du i nå – og hvilket rom vil du spille ballen til?",
+      videos: [] },
+    { id: "spillbar", word: "SPILLBAR", tag: "Med ball",
+      short: "Gjør deg spillbar for ballføreren: Han må se deg, og du må ha god vinkel og avstand – eller flytte deg så du lager plass til en annen.",
+      why: "Ballføreren er bare så god som valgene han har. Hver spiller uten ball kan gjøre ham bedre.",
+      look: ["Ser ballføreren deg – eller står du bak en motspiller?", "Er vinkelen og avstanden til ballføreren god?", "Hvor kan du bevege deg for å gjøre deg spillbar?", "Kan du heller bevege deg for å skape plass til en annen?", "Står du slik at du kan støtte og vende spillet?"],
+      ask: "Hvilke spillpunkter har ballføreren akkurat nå – og er du ett av dem?",
+      videos: [] },
     { id: "godfeil", word: "GOD FEIL", tag: "Holdning",
       short: "En feil der vi hadde fått mye om det hadde lyktes. 1 mot 1 når du er alene med keeper om du kommer forbi – og gjennombruddspasningen. Vi heier på dem.",
       why: "Spillere som tør, blir gode. Mister du ballen etter et godt valg, går vi bare i gjenpress sammen.",
@@ -165,6 +183,7 @@ window.CONTENT = {
     { h: "Vi tør å feile", p: "Gode feil er en del av læringen. Vi teller dem ikke mot deg – vi heier på dem." },
     { h: "Teknikk med mening", p: "Egne teknikkbolker bruker vi mest til avslutninger og moro. Resten av teknikken trener vi i spill." },
     { h: "Glede- og konkurranseøkt", p: "Dagen før kamp har vi en økt med konkurranser, lek, samarbeid og masse avslutninger. Lagene blandes, og innsats teller like mye som å vinne." },
+    { h: "Reglene i 9er", p: "NFF sin spillformbrosjyre forklarer banen, målene, tiden og reglene i 9er-fotball.", url: "https://www.fotball.no/globalassets/barn-og-ungdom/spillformbrosjyrer/nff-spillformbrosjyre-9mot9.pdf" },
     { h: "Oppvarming og kropp", p: "Vi varmer opp med FIFA 11+ Kids. Er du i vekstspurten, gjør du mindre av det tyngste en periode – men du er alltid med laget." },
   ],
 
